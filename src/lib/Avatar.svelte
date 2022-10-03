@@ -3,6 +3,7 @@
   import { supabase } from "../supabaseClient";
 
   export let url: string;
+  export let edit: boolean;
 
   let avatarUrl: string = null;
   let uploading = false;
@@ -73,21 +74,23 @@
   {:else}
     <div class="avatar no-image" />
   {/if}
-  <div>
-    <label class="button primary block upload-avatar" for="single">
-      {uploading ? "Uploading ..." : "Upload avatar"}
-    </label>
-    <span style="display:none">
-      <input
-        type="file"
-        id="single"
-        accept="image/*"
-        bind:files
-        on:change={uploadAvatar}
-        disabled={uploading}
-      />
-    </span>
-  </div>
+  {#if edit}
+    <div>
+      <label class="button primary block upload-avatar" for="single">
+        {uploading ? "Uploading ..." : "Upload avatar"}
+      </label>
+      <span style="display:none">
+        <input
+          type="file"
+          id="single"
+          accept="image/*"
+          bind:files
+          on:change={uploadAvatar}
+          disabled={uploading}
+        />
+      </span>
+    </div>
+  {/if}
 </div>
 
 <style>

@@ -60,6 +60,7 @@ button, .upload-avatar {
   transition: border-color 0.25s;
   display: block;
   margin: 1em;
+  text-transform: uppercase;
  
 }
 button:hover, .upload-avatar:hover {
