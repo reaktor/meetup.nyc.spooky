@@ -107,9 +107,9 @@
     <form>
       <label for="attending">attending:</label>
       <select id="attending" value={attending} on:change={onChange}>
-        <option value="yes"> attending </option>
+        <option value="yes"> yes </option>
         <option value="maybe"> maybe </option>
-        <option value="no"> not attending </option>
+        <option value="no"> no </option>
       </select>
     </form>
 
