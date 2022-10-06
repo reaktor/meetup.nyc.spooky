@@ -2,11 +2,9 @@
   import { onMount } from "svelte";
   import { supabase } from "./supabaseClient";
   import type { AuthSession } from "@supabase/supabase-js";
-  import Account from "./lib/Account.svelte";
-  import Auth from "./lib/Auth.svelte";
-  import Rsvp from "./lib/Rsvp.svelte";
+
   import RsvpCount from "./lib/RsvpCount.svelte";
-  import Divider from "./lib/Divider.svelte";
+  import Horror from "./lib/Horror.svelte";
 
   let session: AuthSession;
 
@@ -21,34 +19,15 @@
   });
 </script>
 
-<div class="container" style="padding: 50px 0 100px 0">
+<div class="container">
   <div class="inline">
     <div class="titlecount">
       <h1 class="header">S P O O K Y</h1>
       <RsvpCount />
     </div>
-
-    {#if session}
-      <div class="signout">
-        <button
-          type="button"
-          class="button block"
-          on:click={() => supabase.auth.signOut()}
-        >
-          Sign Out
-        </button>
-      </div>
-    {/if}
   </div>
 
-  <Divider />
-  {#if !session}
-    <Auth />
-  {:else}
-    <Account {session} />
-    <Divider />
-    <Rsvp {session} />
-  {/if}
+  <Horror {session} />
 </div>
 
 <style>
@@ -56,7 +35,6 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    min-width: 50vw;
   }
   .inline {
     display: flex;
@@ -68,12 +46,6 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-  }
-
-  .signout {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   @media (max-width: 700px) {

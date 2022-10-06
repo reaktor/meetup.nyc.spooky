@@ -4,6 +4,7 @@
   import { supabase } from "../supabaseClient";
 
   export let session: AuthSession;
+  export let showStatusOnly = false;
 
   let loading = false;
   let has_rsvp = false;
@@ -11,16 +12,16 @@
   let attending: string | null = null;
   let event_name: string | null = null;
 
-  onMount(() => {
-    getRsvp();
-  });
+  $: {
+    // hmm, only using an arg here so reactive changes happen when session changes
+    getRsvp(session);
+  }
 
-  async function getRsvp() {
+  async function getRsvp(_: AuthSession) {
     try {
       loading = true;
       const { user } = session;
 
-      console.log("zomg user_id", user.id);
       const { data, error, status } = await supabase
         .from("rsvp")
         .select("user_id, created_at, event_name, attending")
@@ -30,7 +31,6 @@
       if (error && status !== 406) throw error;
 
       if (data) {
-        console.log("zomg rsvp data:", data);
         has_rsvp = true;
         attending = data.attending;
         event_name = data.event_name;
@@ -93,7 +93,6 @@
 
   function onChange(event: Event) {
     const target = event.target as HTMLSelectElement; // hmm, :/
-    console.log("onChnage", target.value);
 
     updateRsvpAttending(target.value).then(() => {
       attending = target.value;
@@ -103,9 +102,9 @@
 
 <div>
   {#if has_rsvp}
-    <h3>RSVP to {event_name}</h3>
-    <form>
-      <label for="attending">attending:</label>
+    <h3 hidden={showStatusOnly}>RSVP to {event_name}</h3>
+    <form disabled={loading}>
+      <label for="attending" hidden={showStatusOnly}>attending:</label>
       <select id="attending" value={attending} on:change={onChange}>
         <option value="yes"> yes </option>
         <option value="maybe"> maybe </option>
@@ -113,8 +112,8 @@
       </select>
     </form>
 
-    <div>{attendingUpdated}</div>
-  {:else}
+    <div hidden={showStatusOnly}>{attendingUpdated}</div>
+  {:else if !showStatusOnly}
     <button on:click={createRsvp}>RSVP!</button>
   {/if}
 </div>
