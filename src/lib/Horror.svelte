@@ -159,9 +159,10 @@
     position: fixed;
     bottom: 10px;
     right: 0;
-    max-height: 250px;
-    max-width: 250px;
+    height: 250px;
+    width: 250px;
     transition-property: all;
+    animation-timing-function: ease-in-out;
     transition-duration: 1s;
   }
   svg.closed .lips {
@@ -182,15 +183,14 @@
   }
 
   svg.opened {
-    max-width: unset;
-    max-height: unset;
-
-    width: 200vw;
-    height: 200vh;
-    bottom: 50%;
-    right: 50%;
-    margin-bottom: -100vh; /* negative half of height. */
-    margin-right: -100vw; /* negative half of width. */
+    width: unset;
+    height: unset;
+    transform: scale(1.5) translate(0, 15%);
+  }
+  @media (max-width: 700px) {
+    svg.opened {
+      transform: scale(2, 2.5);
+    }
   }
 
   .rsvpopen {
