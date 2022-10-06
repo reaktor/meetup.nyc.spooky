@@ -106,6 +106,9 @@
     <form disabled={loading}>
       <label for="attending" hidden={showStatusOnly}>attending:</label>
       <select id="attending" value={attending} on:change={onChange}>
+        {#if showStatusOnly}
+          <option disabled>attending</option>
+        {/if}
         <option value="yes"> yes </option>
         <option value="maybe"> maybe </option>
         <option value="no"> no </option>
@@ -117,9 +120,3 @@
     <button on:click={createRsvp}>RSVP!</button>
   {/if}
 </div>
-
-<style>
-  select {
-    padding: 1em;
-  }
-</style>
