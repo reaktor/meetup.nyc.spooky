@@ -180,14 +180,15 @@
   }
   svg.closed:hover {
     cursor: pointer;
+    transform: scale(1, 1.05);
   }
 
   svg.opened {
     width: unset;
     height: unset;
-    transform: scale(1.5) translate(0, 15%);
+    transform: scale(1.4) translate(0, 20%);
   }
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
     svg.opened {
       transform: scale(2, 2.5);
     }
