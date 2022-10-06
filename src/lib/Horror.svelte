@@ -123,7 +123,7 @@
 </svg>
 
 {#if open}
-  <div class="rsvpopen">
+  <div class="rsvpopen fadein">
     <button on:click={() => (open = false)} class="close" title="close"
       >&times;</button
     >
@@ -143,7 +143,7 @@
     {/if}
   </div>
 {:else}
-  <div class="rsvpStatus">
+  <div class="rsvpStatus fadein">
     <Rsvp {session} showStatusOnly={true} />
   </div>
 {/if}
@@ -213,5 +213,22 @@
     top: -2em;
     left: -4em;
     float: right;
+  }
+
+  .fadein {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes fadeInOpacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 </style>
