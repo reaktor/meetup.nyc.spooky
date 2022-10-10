@@ -18,7 +18,7 @@ note: you probably want to change (or remove) the `emailRedirectTo` over in [Aut
 
 ### deploy
 
-will build and push publish to github pages
+will build and publish to github pages
 
 `npm run deploy`
 
