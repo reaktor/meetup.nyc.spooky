@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="main">
     <p>
       a halloween themed tech meetup happening IRL in NYC! organized by
       <a href="http://edwardsharp.com">3dwardsharp</a>
@@ -63,18 +63,20 @@
       >
     </p>
 
-    <h1 class="header">
+    <h1 class="header presenting">
       👻 <b>P R E S E N T I N G</b>
       🎃
     </h1>
 
     <div class="presenter">
-      <h2>briar sweetbriar</h2>
       <img
         src="briarsweetbriar.png"
         title="this is a graphic from an article dazed wrote about us last year"
         alt="this is a graphic from an article dazed wrote about us last year"
       />
+
+      <h2>briar sweetbriar</h2>
+
       <p>she/her</p>
       <p>
         a child of the 90s, briar was excited by the radical potential of the
@@ -108,8 +110,10 @@
     </div>
 
     <div class="presenter">
-      <h2>Hugh</h2>
       <img src="lucid00.jpeg" title="lucid00" alt="lucid00" />
+
+      <h2>Hugh</h2>
+
       <p>He/him</p>
       <p>Freelance web developer/indie rapper</p>
       <p>
@@ -121,8 +125,10 @@
     </div>
 
     <div class="presenter">
-      <h2>Sabrina Sims (starlybri)</h2>
       <img src="starlybri.jpg" title="starlybri" alt="starlybri" />
+
+      <h2>Sabrina Sims (starlybri)</h2>
+
       <p>she/her</p>
       <p>
         Sabrina Sims is a Black Puerto Rican interdisciplinary artist from the
@@ -155,6 +161,10 @@
     flex-direction: column;
     margin-bottom: 250px;
   }
+
+  .main {
+    margin-top: 3em;
+  }
   .inline {
     display: flex;
     flex-direction: row;
@@ -167,6 +177,10 @@
     text-align: left;
   }
 
+  .presenting {
+    margin-top: 2em;
+  }
+
   .presenter {
     padding: 3em 0;
     clear: both;
@@ -175,7 +189,7 @@
   .presenter > img {
     float: left;
     margin-right: 1em;
-    max-width: 33vw;
+    width: 33vw;
     border-radius: 10px;
   }
 
