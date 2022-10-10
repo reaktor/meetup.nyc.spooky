@@ -25,3 +25,5 @@ will build and publish to github pages
 see also: [VITE-README](VITE-README.md)
 
 see also: https://github.com/reaktor/meetup.nyc
+
+see also: https://kinopio.club/s-p-o-o-k-y-EoaFRUwi8HyyjewL2BeY9
