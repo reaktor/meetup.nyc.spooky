@@ -8,7 +8,12 @@
   const handleLogin = async () => {
     try {
       loading = true;
-      const { error } = await supabase.auth.signInWithOtp({ email });
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: "https://reaktor.github.io/meetup.nyc.spooky/",
+        },
+      });
       if (error) throw error;
       responseMsg =
         "you are RSVP'd as maybe. check your email for magic link. when you get back here, you can change your RSVP to 'yes' (or 'no').";
