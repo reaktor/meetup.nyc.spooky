@@ -10,7 +10,8 @@
       loading = true;
       const { error } = await supabase.auth.signInWithOtp({ email });
       if (error) throw error;
-      responseMsg = "Check your email for login link!";
+      responseMsg =
+        "you are RSVP'd as maybe. check your email for magic link. when you get back here, you can change your RSVP to 'yes' (or 'no').";
     } catch (error) {
       if (error instanceof Error) {
         responseMsg = error.message;

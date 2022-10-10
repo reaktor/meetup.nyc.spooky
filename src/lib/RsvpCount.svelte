@@ -41,4 +41,11 @@
   .count {
     margin-top: -2em;
   }
+
+  @media (max-width: 700px) {
+    .count {
+      font-size: 0.75em;
+      text-align: center;
+    }
+  }
 </style>

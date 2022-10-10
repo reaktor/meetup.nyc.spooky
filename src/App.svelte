@@ -3,10 +3,11 @@
   import { supabase } from "./supabaseClient";
   import type { AuthSession } from "@supabase/supabase-js";
 
-  import RsvpCount from "./lib/RsvpCount.svelte";
   import Horror from "./lib/Horror.svelte";
+  import Info from "./lib/Info.svelte";
 
   let session: AuthSession;
+  let open = false;
 
   onMount(() => {
     supabase.auth.getSession().then(({ data }) => {
@@ -17,47 +18,20 @@
       session = _session;
     });
   });
+
+  function toggle() {
+    if (!open) {
+      open = true;
+    }
+  }
+
+  function close() {
+    open = false;
+  }
 </script>
 
-<div class="container">
-  <div class="inline">
-    <div class="titlecount">
-      <h1 class="header">S P O O K Y</h1>
-      <RsvpCount />
-    </div>
-  </div>
+{#if !open}
+  <Info />
+{/if}
 
-  <Horror {session} />
-</div>
-
-<style>
-  .container {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-  }
-  .inline {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
-
-  .titlecount {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-  }
-
-  @media (max-width: 700px) {
-    .container {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      min-width: 80vw;
-    }
-
-    .inline {
-      flex-direction: column;
-    }
-  }
-</style>
+<Horror {session} {open} {toggle} {close} />

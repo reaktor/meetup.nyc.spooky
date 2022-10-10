@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { AuthSession } from "@supabase/supabase-js";
-  import { onMount } from "svelte";
   import { supabase } from "../supabaseClient";
 
   export let session: AuthSession;
@@ -19,6 +18,9 @@
 
   async function getRsvp(_: AuthSession) {
     try {
+      if (!session) {
+        return;
+      }
       loading = true;
       const { user } = session;
 
