@@ -144,6 +144,10 @@
   </div>
 </div>
 
+<div class="madewith">
+  <a href="https://github.com/reaktor/meetup.nyc.spooky">made with 💖 in nyc</a>
+</div>
+
 <style>
   .container {
     /* text-align: center; */
@@ -175,6 +179,9 @@
     border-radius: 10px;
   }
 
+  .madewith {
+    font-size: 0.75em;
+  }
   @media (max-width: 700px) {
     .container {
       /* text-align: center; */
