@@ -1,30 +1,7 @@
 <script lang="ts">
-  import { supabase } from "../supabaseClient";
-
   let loading = false;
   let email = "";
   let responseMsg = "";
-
-  const handleLogin = async () => {
-    try {
-      loading = true;
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: "https://reaktor.github.io/meetup.nyc.spooky/",
-        },
-      });
-      if (error) throw error;
-      responseMsg =
-        "you are RSVP'd as maybe. check your email for magic link. when you get back here, you can change your RSVP to 'yes' (or 'no').";
-    } catch (error) {
-      if (error instanceof Error) {
-        responseMsg = error.message;
-      }
-    } finally {
-      loading = false;
-    }
-  };
 </script>
 
 <div class="row flex-center flex">
@@ -32,8 +9,9 @@
     {#if responseMsg}
       <h3>{responseMsg}</h3>
     {:else}
-      <p class="description">Enter your email below to RSVP.</p>
-      <form class="form-widget" on:submit|preventDefault={handleLogin}>
+    <p class="description">IT'S OVER!</p>
+      <!-- <p class="description">Enter your email below to RSVP.</p>
+      <form class="form-widget">
         <div>
           <label for="email">Email</label>
           <input
@@ -54,7 +32,7 @@
             <span>{loading ? "Loading" : "RSVP"}</span>
           </button>
         </div>
-      </form>
+      </form> -->
     {/if}
   </div>
 </div>

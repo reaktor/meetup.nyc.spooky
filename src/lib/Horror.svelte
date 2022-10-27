@@ -1,11 +1,9 @@
 <script lang="ts">
-  import type { AuthSession } from "@supabase/supabase-js";
   import Account from "./Account.svelte";
   import Auth from "./Auth.svelte";
   import Rsvp from "./Rsvp.svelte";
-  import { supabase } from "../supabaseClient";
 
-  export let session: AuthSession;
+  export let session = false;
   export let open: boolean;
   export let toggle: () => void;
   export let close: () => void;
@@ -113,7 +111,7 @@
           y="250"
           font-size="69px"
           fill="#ff6600"
-          font-family="cursive">RSVP</text
+          font-family="cursive"></text
         >
       {/if}
     </g>
@@ -131,17 +129,17 @@
         <button
           type="button"
           class="button block signout"
-          on:click={() => supabase.auth.signOut()}
+          
         >
           Sign Out
         </button>
-        <Account {session} />
-        <Rsvp {session} />
+        <Account />
+        <Rsvp />
       {/if}
     </div>
   {:else}
     <div class="rsvpStatus fadein">
-      <Rsvp {session} showStatusOnly={true} />
+      <Rsvp showStatusOnly={true} />
     </div>
   {/if}
 </div>

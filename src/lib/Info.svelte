@@ -5,10 +5,12 @@
 <div class="container">
   <div class="inline">
     <div class="titlecount">
+      <i>ohey! this event happened and this page is left here for posterity.</i>
       <h1 class="header">
         👻 <b>S P O O K Y</b>
         🎃
       </h1>
+      
       <RsvpCount />
     </div>
   </div>
