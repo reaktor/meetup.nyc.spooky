@@ -10,6 +10,11 @@ built with:
 
 🗣 [supabase](https://supabase.com/)
 
+
+## note on posterity:
+
+this event happened, the supabase instance was deleted, and the supabase parts of the code were yanked, see this commit for a stable example integrated with supabase: https://github.com/reaktor/meetup.nyc.spooky/releases/tag/stable
+
 ### local dev
 
 `npm run dev`
